@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home Page - Kaeden Parra</title>
+
+  <!-- Google Fonts: Poppins + Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Reset and basics */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: url('1330264.png') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Gradient overlay on bg for text readability */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, rgba(21,32,43,0.85) 0%, rgba(59,89,132,0.8) 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      font-weight: 600;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 25px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      position: relative;
+      transition: color 0.4s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background-color: #f8e71c;
+      bottom: -6px;
+      left: 0;
+      transition: width 0.3s ease;
+      border-radius: 1px;
+    }
+
+    nav a:hover {
+      color: #f8e71c;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Container for content */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 140px auto 100px;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    /* Heading with fade & slide & scale */
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5rem;
+      margin-bottom: 30px;
+      color: #f8e71c;
+      letter-spacing: 3px;
+      animation: fadeSlideScaleIn 2s ease forwards;
+      opacity: 0;
+      transform: translateY(-40px) scale(0.95);
+    }
+
+    @keyframes fadeSlideScaleIn {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Subtitle */
+    p.subtitle {
+      font-size: 1.2rem;
+      color: #e0e0e0;
+      margin-bottom: 50px;
+      font-weight: 500;
+      animation: fadeInUp 2.5s ease forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Link buttons container */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    /* Button style */
+    .btn-link {
+      background: transparent;
+      border: 2.5px solid #f8e71c;
+      color: #f8e71c;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.25rem;
+      padding: 18px 40px;
+      border-radius: 40px;
+      box-shadow:
+        0 0 10px #f8e71c44,
+        0 0 25px #f8e71c33,
+        inset 0 0 10px #f8e71c99;
+      transition:
+        background-color 0.35s ease,
+        color 0.35s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 3s ease forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    /* Stagger button animations */
+    .btn-link:nth-child(1) {
+      animation-delay: 3.2s;
+    }
+    .btn-link:nth-child(2) {
+      animation-delay: 3.5s;
+    }
+    .btn-link:nth-child(3) {
+      animation-delay: 3.8s;
+    }
+    .btn-link:nth-child(4) {
+      animation-delay: 4.1s;
+    }
+
+    /* Hover effects */
+    .btn-link:hover {
+      background: #f8e71c;
+      color: #121212;
+      box-shadow:
+        0 0 20px #f8e71ccc,
+        0 0 40px #f8e71cff,
+        inset 0 0 15px #f8e71cff;
+      transform: scale(1.05);
+      z-index: 1;
+    }
+
+    /* Active click effect */
+    .btn-link:active {
+      transform: scale(0.95);
+      box-shadow: none;
+      background-color: #b59d0c;
+      color: #1c1c1c;
+    }
+
+    /* Footer */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.6);
+      color: #f8e71c;
+      text-align: center;
+      padding: 12px 0;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      font-size: 0.9rem;
+      font-family: 'Montserrat', sans-serif;
+      transition: background-color 0.4s ease;
+      cursor: default;
+      z-index: 10;
+    }
+
+    footer:hover {
+      background: #f8e71c;
+      color: #121212;
+      font-weight: 700;
+      box-shadow: 0 0 15px #f8e71c;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      .btn-link {
+        font-size: 1.05rem;
+        padding: 15px 30px;
+      }
+      nav a {
+        margin: 0 12px;
+        font-size: 1rem;
+      }
+      .container {
+        margin: 120px 20px 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="Interest.html">Interests</a>
+    <a href="projects.html">Projects</a>
+    <a href="Hobbies.html">Hobbies</a>
+    <a href="FavoriteSites.html">Favorite Sites</a>
+  </nav>
+
+  <div class="container">
+    <h1>Welcome to My Home Page</h1>
+    <p class="subtitle">Discover my interests, projects, hobbies, and favorite sites.</p>
+
+    <div class="links">
+      <a class="btn-link" href="Interest.html">🔎 Interests</a>
+      <a class="btn-link" href="projects.html">🛠 Projects</a>
+      <a class="btn-link" href="Hobbies.html">🎮 Hobbies</a>
+      <a class="btn-link" href="FavoriteSites.html">🖥 Favorite Sites</a>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Kaeden Parra . All rights reserved.
+  </footer>
+
+</body>
+</html>

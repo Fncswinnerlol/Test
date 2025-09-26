@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECTS ⚡</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    :root{
+      --bg-gradient:url('1330264.png');
+      --card-bg:rgba(0,0,0,.55);
+      --text-color:#fff;
+      --accent:#ffcc00;
+      --link-bg:#ff8c00;
+      --link-hover:#ffa500;
+      --sidebar-bg:rgba(0,0,0,.7);
+      --sidebar-hover:#ffa500;
+    }
+    body.dark-mode{
+      --card-bg:rgba(255,255,255,.15);
+      --text-color:#fff;
+      --link-bg:#cc7000;
+      --link-hover:#ff9900;
+      --sidebar-bg:rgba(255,255,255,.15);
+      --sidebar-hover:#ff9900;
+    }
+
+    *{box-sizing:border-box;margin:0}
+
+    /* --- SIDEBAR --- */
+    .sidebar{
+      position:fixed;top:0;left:0;height:100%;width:200px;
+      background:var(--sidebar-bg);
+      padding:60px 0 20px;
+      display:flex;flex-direction:column;gap:18px;
+      z-index:1000;box-shadow:2px 0 10px rgba(0,0,0,.6);
+      transition:background .3s;
+    }
+    .sidebar a{
+      color:var(--text-color);text-decoration:none;
+      font:600 1.05rem/1 Poppins, sans-serif;
+      padding:12px 24px;border-left:5px solid transparent;
+      display:flex;align-items:center;gap:10px;
+      transition:background .3s,border-color .3s;
+    }
+    .sidebar a i{font-size:1.2rem;min-width:22px;text-align:center;}
+    .sidebar a:hover{background:var(--sidebar-hover);border-left-color:var(--sidebar-hover);color:#000;}
+    .sidebar a.active{background:var(--sidebar-hover);border-left-color:var(--sidebar-hover);color:#000;cursor:default;}
+
+    /* --- MAIN LAYOUT --- */
+    body{
+      min-height:100vh;
+      font-family:'Poppins',sans-serif;
+      color:var(--text-color);
+      background-image:var(--bg-gradient);
+      background-size:cover;background-attachment:fixed;
+      text-align:center;overflow-x:hidden;
+      transition:background .4s,color .4s;
+      padding:30px 20px 40px 220px;          /* space for sidebar */
+    }
+
+    /* THEME TOGGLE */
+    .theme-toggle{
+      position:fixed;top:15px;right:15px;z-index:1010;
+      display:flex;align-items:center;gap:6px;
+      padding:10px 14px;border-radius:30px;
+      background:var(--card-bg);color:var(--text-color);
+      border:none;cursor:pointer;backdrop-filter:blur(6px);
+      transition:background .3s;
+    }
+    .theme-toggle:hover{background:var(--link-hover);}
+    .theme-toggle i{pointer-events:none;}
+
+    /* HEADINGS & TEXT */
+    h1{
+      font-size:3rem;margin:25px 0 10px;
+      background:linear-gradient(90deg,#ffcc00,#ffa500);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      opacity:0;animation:fadeDown 1.2s forwards;
+    }
+    p{
+      font-size:1.15rem;margin-bottom:40px;
+      opacity:0;animation:fadeIn 1.6s forwards;
+    }
+
+    /* PROJECT GRID */
+    .project-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:30px;width:min(90%,1100px);margin:auto;
+      opacity:0;animation:fadeUp 1.8s forwards;
+    }
+    .project-card{
+      background:var(--card-bg);border-radius:18px;
+      padding:24px;text-align:left;
+      box-shadow:0 0 16px rgba(0,0,0,.4);
+      transition:transform .3s;
+    }
+    .project-card:hover{transform:translateY(-6px);}
+    .project-card h3{color:var(--accent);margin-bottom:10px;}
+    .project-card p{font-size:.95rem;line-height:1.4;}
+
+    /* BACK LINK */
+    .back-link{
+      display:inline-block;margin-top:45px;
+      background:var(--link-bg);color:#fff;
+      padding:14px 26px;border-radius:12px;border:2px solid #000;
+      text-decoration:none;font-weight:600;
+      transition:transform .25s,background .25s,box-shadow .25s;
+      animation:pulse 3s infinite;
+    }
+    .back-link:hover{
+      background:var(--link-hover);transform:scale(1.05);
+      box-shadow:0 0 20px var(--link-hover);animation:none;
+    }
+
+    /* KEYFRAMES */
+    @keyframes fadeDown{from{opacity:0;transform:translateY(-25px);}to{opacity:1;transform:none}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(25px);}to{opacity:1;transform:none}}
+    @keyframes fadeIn{from{opacity:0;}to{opacity:1}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 12px rgba(255,140,0,.65);}50%{box-shadow:0 0 24px rgba(255,140,0,1);}}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="Interest.html"><i class="fas fa-star"></i> Interest</a>
+    <a href="projects.html" class="active"><i class="fas fa-project-diagram"></i> Projects</a>
+    <a href="Hobbies.html"><i class="fas fa-gamepad"></i> Hobbies</a>
+    <a href="FavoriteSites.html"><i class="fas fa-link"></i> Favorite Sites</a>
+  </nav>
+
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" onclick="toggleTheme()">
+    <i class="fas fa-adjust"></i><span id="theme-text">Light/Dark</span>
+  </button>
+
+  <!-- Page Content -->
+  <h1>These are my Projects</h1>
+  <p>This page highlights some of my creative and technical projects – where I put skills into action.</p>
+
+  <div class="project-grid">
+    <div class="project-card">
+      <h3><i class="fas fa-code"></i> Portfolio Website</h3>
+      <p>A personal website built with HTML, CSS, and JavaScript to showcase my work and skills.</p>
+    </div>
+    <div class="project-card">
+      <h3><i class="fas fa-gamepad"></i> Life</h3>
+      <p>This was fun to make.</p>
+    </div>
+    <div class="project-card">
+      <h3><i class="fas fa-paint-brush"></i> Coming Soon</h3>
+      <p>I'll add more projects soon :)</p>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-link">Back to Home</a>
+
+  <!-- Script for Theme Toggle -->
+  <script>
+    const body = document.body;
+    const themeText = document.getElementById('theme-text');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const storedTheme = localStorage.getItem('theme');
+
+    if (storedTheme === 'dark' || (!storedTheme && prefersDark)) body.classList.add('dark-mode');
+    updateText();
+
+    function toggleTheme(){
+      body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+      updateText();
+    }
+    function updateText(){
+      themeText.textContent = body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+    }
+  </script>
+</body>
+</html>

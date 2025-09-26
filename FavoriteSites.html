@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SITES 💀</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    /* Variables for Light & Dark modes */
+    :root {
+      --bg-image: url('alps-3840x2160-5k-4k-wallpaper-8k-france-mountain-sunset-hills-5331.jpg');
+      --card-bg: rgba(0, 0, 0, 0.55);
+      --text-color: #fff;
+      --accent: #00ffff;
+      --link-bg: #4169E1;
+      --link-hover: #87CEEB;
+      --glow-color: #00ffff;
+      --shadow-glow: rgba(0, 255, 255, 0.6);
+    }
+    body.dark-mode {
+      --card-bg: rgba(255, 255, 255, 0.15);
+      --link-bg: #000080;
+      --link-hover: #4682B4;
+      --glow-color: #7FFFD4;
+      --shadow-glow: rgba(127, 255, 212, 0.6);
+    }
+
+    /* Reset */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 30px 20px 40px;
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-color);
+      background-image: var(--bg-image);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      text-align: center;
+      transition: background 0.4s ease, color 0.4s ease;
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* Sidebar styles */
+    nav.sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 220px;
+      background: var(--card-bg);
+      box-shadow: 0 0 15px var(--shadow-glow);
+      backdrop-filter: blur(10px);
+      padding-top: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 100;
+    }
+    nav.sidebar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    nav.sidebar ul li a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      transition: background 0.3s, box-shadow 0.3s;
+      user-select: none;
+    }
+    nav.sidebar ul li a:hover,
+    nav.sidebar ul li a:focus {
+      background: var(--link-bg);
+      box-shadow: 0 0 12px var(--glow-color);
+      outline: none;
+    }
+    nav.sidebar ul li a i {
+      font-size: 1.3rem;
+      min-width: 24px;
+    }
+
+    /* Main content */
+    main.content {
+      margin-left: 240px;
+      flex-grow: 1;
+      padding: 0 20px;
+      text-align: center;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 12px;
+      background: linear-gradient(90deg, #00f2ff, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInDown 1.2s ease forwards, glowPulse 3s ease-in-out infinite;
+      opacity: 0;
+      user-select: none;
+    }
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeIn 1.8s ease forwards;
+    }
+
+    /* Table styling */
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      background: var(--card-bg);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
+      width: min(90%, 700px);
+      opacity: 0;
+      animation: fadeInUp 2s ease forwards;
+      position: relative;
+      z-index: 1;
+      color: var(--text-color);
+    }
+    /* Glowing gradient border around table */
+    table::before {
+      content: "";
+      position: absolute;
+      top: -4px; left: -4px; right: -4px; bottom: -4px;
+      border-radius: 18px;
+      background: linear-gradient(270deg,
+        transparent,
+        var(--glow-color),
+        transparent,
+        var(--glow-color),
+        transparent);
+      background-size: 400% 400%;
+      animation: glowingBorder 8s linear infinite;
+      z-index: -1;
+      filter: drop-shadow(0 0 6px var(--glow-color));
+    }
+    th, td {
+      padding: 16px 18px;
+      border: 1px solid white;
+      color: var(--text-color);
+      user-select: none;
+    }
+    th {
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.12);
+      letter-spacing: 0.8px;
+      animation: fadeInSlide 0.6s ease forwards;
+    }
+    /* Animate each row with staggered delay */
+    tr:nth-child(2) td { animation: fadeInSlide 0.8s ease forwards; opacity: 0; }
+    tr:nth-child(3) td { animation: fadeInSlide 1.0s ease forwards; opacity: 0; }
+    tr:nth-child(4) td { animation: fadeInSlide 1.2s ease forwards; opacity: 0; }
+    
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.1);
+      transition: background 0.3s ease;
+      animation: glowPulse 1.5s ease-in-out infinite;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Back link styling with subtle glow */
+    .back-link {
+      display: inline-block;
+      margin-top: 45px;
+      background: var(--link-bg);
+      color: #fff;
+      padding: 14px 26px;
+      border-radius: 12px;
+      border: 2px solid #000;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.25s, background 0.25s, box-shadow 0.25s;
+      animation: pulseSubtle 3s infinite;
+      user-select: none;
+    }
+    .back-link:hover {
+      background: var(--link-hover);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px var(--link-hover);
+      animation: none;
+    }
+
+    /* Theme toggle button */
+    .theme-toggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: var(--card-bg);
+      border: none;
+      border-radius: 30px;
+      color: var(--text-color);
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      transition: background 0.3s, box-shadow 0.3s;
+      z-index: 110;
+      font-weight: 600;
+      font-size: 0.95rem;
+      user-select: none;
+      box-shadow: 0 0 8px var(--glow-color);
+    }
+    .theme-toggle:hover {
+      background: var(--link-hover);
+      box-shadow: 0 0 18px var(--link-hover);
+    }
+    .theme-toggle i {
+      font-size: 1.1rem;
+      pointer-events: none;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInSlide {
+      0% {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 12px var(--link-hover);
+      }
+      50% {
+        box-shadow: 0 0 24px var(--link-hover);
+      }
+    }
+    @keyframes pulseSubtle {
+      0%, 100% {
+        box-shadow: 0 0 8px rgba(135, 206, 235, 0.5);
+        text-shadow: 0 0 5px rgba(135, 206, 235, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 14px rgba(135, 206, 235, 0.7);
+        text-shadow: 0 0 8px rgba(135, 206, 235, 0.7);
+      }
+    }
+    @keyframes glowPulse {
+      0%, 100% {
+        text-shadow: 0 0 6px var(--glow-color);
+        box-shadow: 0 0 6px var(--glow-color);
+      }
+      50% {
+        text-shadow: 0 0 12px var(--glow-color);
+        box-shadow: 0 0 16px var(--glow-color);
+      }
+    }
+    @keyframes glowingBorder {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 400% 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="sidebar" aria-label="Sidebar navigation">
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="Interest.html"><i class="fas fa-lightbulb"></i> Interest</a></li>
+      <li><a href="projects.html"><i class="fas fa-project-diagram"></i> Projects</a></li>
+      <li><a href="Hobbies.html"><i class="fas fa-gamepad"></i> Hobbies</a></li>
+      <li><a href="FavoriteSites.html"><i class="fas fa-star"></i> Favorite Sites</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+      <i class="fas fa-adjust"></i><span id="theme-text">Light Mode</span>
+    </button>
+
+    <h1>Favorite Sites</h1>
+    <p>This is a paragraph.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Sites</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><i class="fab fa-youtube" style="margin-right:8px;"></i>Youtube</td>
+          <td>10/10</td>
+        </tr>
+        <tr>
+          <td><i class="fab fa-instagram" style="margin-right:8px;"></i>Instagram</td>
+          <td>9/10</td>
+        </tr>
+        <tr>
+          <td><i class="fab fa-netflix" style="margin-right:8px;"></i>Netflix</td>
+          <td>7/10</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <a href="index.html" class="back-link">Back to home page</a>
+  </main>
+
+  <script>
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const body = document.body;
+    const themeText = document.getElementById('theme-text');
+    const storedTheme = localStorage.getItem('theme');
+
+    function updateThemeText() {
+      if (body.classList.contains('dark-mode')) {
+        themeText.textContent = 'Dark Mode';
+      } else {
+        themeText.textContent = 'Light Mode';
+      }
+    }
+
+    // Initialize theme based on stored preference or system preference
+    if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+      body.classList.add('dark-mode');
+    } else {
+      body.classList.remove('dark-mode');
+    }
+    updateThemeText();
+
+    function toggleTheme() {
+      body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+      updateThemeText();
+    }
+  </script>
+</body>
+</html>
